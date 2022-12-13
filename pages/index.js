@@ -88,9 +88,19 @@ export const getServerSideProps = async () => {
       photo = json
     })
 
+  const meta = {
+    "title": "Art With Me - デジタル空間で障害者アートを発信中",
+    "url": "https://dev.art-with.me/",
+    "card": "summary_large_image",
+    "description": "Art With Meは障害者によるデジタールアート作品を売買する全く新しい空間です。",
+    "keywords": "Art With Me,福祉NFT,デジタルアート,絵画,イラスト,写真,デザイン",
+    "image": "https://dev-api.art-with.me/v1/public/resources?type=article_series&filename=2022-12-05_18:20:46.jpeg",
+    "type": "website"
+  }
+
   return {
     props: {
-      photo,
+      meta,
     },
   };
 };
