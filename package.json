@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "create-next-app": "^13.0.6",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.6",
     "next": "13.0.6",
