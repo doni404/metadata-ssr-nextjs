@@ -2,21 +2,33 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-const Home = ({ photo }) => {
+const Home = (propsMeta) => {
+  console.log("propsMeta : ", propsMeta)
+  const meta = propsMeta.meta
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Social Media Preview</title>
-        <meta property="og:url" content="https://team-place.com/" />
-        <meta property="og:type" content="website" />
-        <meta property="fb:app_id" content="2747726002141483" />
-        <meta property="og:title" content={photo?.title} />
-        <meta name="twitter:card" content="summary" />
-        <meta
-          property="og:description"
-          content="Hurray!! Yes Social Media Preview is Working"
-        />
-        <meta property="og:image" content={photo?.url} />
+        {/* <!-- Primary Meta Tags --> */}
+        <title>{meta.title}</title>
+        <meta name="title" content={meta.title} key="title" />
+        <meta name="description" content={meta.description} key="description" />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content={meta.type} key="og:type" />
+        <meta property="og:url" content={meta.url} key="og:url" />
+        <meta property="og:title" content={meta.title} key="og:title" />
+        <meta property="og:description" content={meta.description} key="og:description" />
+        <meta property="og:image" content={meta.image} key="og:image" />
+        <meta property="og:keywords" content={meta.keywords} key="og:keywords" />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content={meta.card} key="twitter:card" />
+        <meta property="twitter:url" content={meta.url} key="twitter:url" />
+        <meta property="twitter:title" content={meta.title} key="twitter:url" />
+        <meta property="twitter:description" content={meta.description} key="twitter:description" />
+        <meta property="twitter:image" content={meta.image} key="twitter:image" />
+        <meta property="twitter:keywords" content={meta.keywords} key="twitter:keywords" />
       </Head>
 
       <main className={styles.main}>
@@ -81,13 +93,6 @@ const Home = ({ photo }) => {
 export default Home
 
 export const getServerSideProps = async () => {
-  let photo = null;
-  await fetch('https://jsonplaceholder.typicode.com/photos/1')
-    .then((response) => response.json())
-    .then((json) => {
-      photo = json
-    })
-
   const meta = {
     "title": "Art With Me - デジタル空間で障害者アートを発信中",
     "url": "https://dev.art-with.me/",
